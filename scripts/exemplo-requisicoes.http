@@ -1,0 +1,36 @@
+### Criar marca
+POST http://localhost:8080/api/marcas
+Content-Type: application/json
+
+{"nome":"Toyota"}
+
+### Listar marcas
+GET http://localhost:8080/api/marcas
+
+### Criar modelo (ajuste marcaId para o ID retornado)
+POST http://localhost:8080/api/modelos
+Content-Type: application/json
+
+{"nome":"Corolla","marcaId":1}
+
+### Criar veículo (ajuste modeloId para o ID retornado)
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "cor": "Prata",
+  "anoFabricacao": 2022,
+  "preco": 112900.00,
+  "quilometragem": 35000,
+  "status": "DISPONIVEL"
+}
+
+### Listar veículos
+GET http://localhost:8080/api/veiculos
+
+### Filtrar disponíveis
+GET http://localhost:8080/api/veiculos?status=DISPONIVEL
+
+### Filtrar faixa de preço
+GET http://localhost:8080/api/veiculos?precoMin=50000&precoMax=150000

@@ -1,0 +1,243 @@
+
+GET http://localhost:8080/api/veiculos
+Accept: application/json
+
+### Cadastrar uma marca
+POST http://localhost:8080/api/marcas
+Content-Type: application/json
+
+{
+  "nome": "Toyota"
+}
+
+
+### Listar marcas cadastradas
+GET http://localhost:8080/api/marcas
+Accept: application/json
+
+
+### Cadastrar modelo Corolla da Toyota
+POST http://localhost:8080/api/modelos
+Content-Type: application/json
+
+{
+  "nome": "Corolla",
+  "marcaId": 1
+}
+
+
+### Cadastrar veículo Toyota Corolla
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "cor": "Prata",
+  "anoFabricacao": 2024,
+  "preco": 120000.00,
+  "quilometragem": 15000,
+  "status": "DISPONIVEL"
+}
+
+
+### Listar veículos cadastrados
+GET http://localhost:8080/api/veiculos
+Accept: application/json
+
+
+### Filtrar veículos por marca Toyota
+GET http://localhost:8080/api/veiculos?marcaId=1
+Accept: application/json
+
+### Filtrar veículos por modelo Corolla
+GET http://localhost:8080/api/veiculos?modeloId=1
+Accept: application/json
+
+### Filtrar veículos por preço mínimo
+GET http://localhost:8080/api/veiculos?precoMin=100000
+Accept: application/json
+
+### Filtrar veículos por ano
+GET http://localhost:8080/api/veiculos?ano=2024
+Accept: application/json
+
+### Filtrar veículos por status disponível
+GET http://localhost:8080/api/veiculos?status=DISPONIVEL
+Accept: application/json
+
+
+### Alterar veículo ID 1
+PUT http://localhost:8080/api/veiculos/1
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "cor": "Preto",
+  "anoFabricacao": 2024,
+  "preco": 118000.00,
+  "quilometragem": 16000,
+  "status": "DISPONIVEL"
+}
+
+
+### Cadastrar marca Honda
+POST http://localhost:8080/api/marcas
+Content-Type: application/json
+
+{
+  "nome": "Honda"
+}
+
+
+### Cadastrar modelo Civic da Honda
+POST http://localhost:8080/api/modelos
+Content-Type: application/json
+
+{
+  "nome": "Civic",
+  "marcaId": 2
+}
+
+
+### Cadastrar veículo Honda Civic
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 2,
+  "cor": "Branco",
+  "anoFabricacao": 2022,
+  "preco": 105000.00,
+  "quilometragem": 30000,
+  "status": "DISPONIVEL"
+}
+
+
+### Cadastrar marca Hyundai
+POST http://localhost:8080/api/marcas
+Content-Type: application/json
+
+{
+  "nome": "Hyundai"
+}
+
+
+### Cadastrar modelo HB20 da Hyundai
+POST http://localhost:8080/api/modelos
+Content-Type: application/json
+
+{
+  "nome": "HB20",
+  "marcaId": 3
+}
+
+
+### Cadastrar veículo Hyundai HB20
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 3,
+  "cor": "Cinza",
+  "anoFabricacao": 2025,
+  "preco": 85000.00,
+  "quilometragem": 10000,
+  "status": "DISPONIVEL"
+}
+
+
+### Listar todos os veículos
+GET http://localhost:8080/api/veiculos
+
+
+### Filtrar pela marca Toyota
+GET http://localhost:8080/api/veiculos?marcaId=1
+
+### Filtrar pelo ano 2022
+GET http://localhost:8080/api/veiculos?ano=2022
+
+### Filtrar preço mínimo de 100 mil
+GET http://localhost:8080/api/veiculos?precoMin=100000
+
+### Filtrar preço máximo de 90000
+GET http://localhost:8080/api/veiculos?precoMax=90000
+
+### Filtrar pela marca Hyundai
+GET http://localhost:8080/api/veiculos?marcaId=3
+
+
+### Consultar o Honda Civic pelo ID
+GET http://localhost:8080/api/veiculos/2
+
+
+### Excluir o Hyundai HB20
+DELETE http://localhost:8080/api/veiculos/3
+
+
+### Conferir os veículos restantes
+GET http://localhost:8080/api/veiculos
+
+
+### Excluir o Hyundai HB20
+DELETE http://localhost:8080/api/veiculos/3
+
+### Filtrar veículos disponíveis
+GET http://localhost:8080/api/veiculos?status=DISPONIVEL
+
+
+### Testar validação de preço inválido
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "cor": "Azul",
+  "anoFabricacao": 2023,
+  "preco": -100,
+  "quilometragem": 10000,
+  "status": "DISPONIVEL"
+}
+
+
+### Testar validação de quilometragem inválida
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "cor": "Azul",
+  "anoFabricacao": 2023,
+  "preco": 100000.00,
+  "quilometragem": -100,
+  "status": "DISPONIVEL"
+}
+
+
+### Testar campo obrigatório ausente
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "anoFabricacao": 2023,
+  "preco": 100000.00,
+  "quilometragem": 10000,
+  "status": "DISPONIVEL"
+}
+
+### Verificar se os veículos continuam salvos
+GET http://localhost:8080/api/veiculos
+
+
+### Cadastrar veículo de teste no MySQL
+POST http://localhost:8080/api/veiculos
+Content-Type: application/json
+
+{
+  "modeloId": 1,
+  "cor": "Prata",
+  "anoFabricacao": 2024,
+  "preco": 120000.00,
+  "quilometragem": 15000,
+  "status": "DISPONIVEL"
+}
